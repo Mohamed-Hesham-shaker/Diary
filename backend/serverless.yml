@@ -117,6 +117,20 @@ functions:
           - dynamodb:UpdateDiary
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}
 
+  DeleteDiary:
+    handler: src/lambda/http/deleteDiary.handler
+    events:
+      - http:
+          method: delete
+          path: diraies/{diaryId}
+          cors: true
+          authorizer: Auth
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:DeleteItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}  
+
   GenerateUploadUrl:
     handler: src/lambda/http/generateUploadUrl.handler
     events:
