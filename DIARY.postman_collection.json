@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "066f810c-112b-45a7-9499-0086eb3a9e0b",
+		"name": "DIARIES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Diary",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpLTkpfVWNScGtXMnQwQzdETmstYiJ9.eyJpc3MiOiJodHRwczovL2Rldi1lOXV5ODhxYS51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTc0NDUxMzk3NzUyNjAyMjAyMjMiLCJhdWQiOiJ2UklLY1gyblUybnR5RzdPa211Y2JrU251ZTM4Y1l5bCIsImlhdCI6MTYyOTIzMzI0MSwiZXhwIjoxNjI5NjY1MjQxLCJhdF9oYXNoIjoiRVBpbG5FWTU4SjJESU5Ta3BwZTYwdyIsIm5vbmNlIjoia1FLM2dxMFphSFBqbFU2dzhRQUVwT2xYLTYuS1FvTGUifQ.oPlHIED_4NfDdpExz4_6C7_KmKiGzAowblDi8oML89UorMlpCEZ9U_94mDt2lQMdeDUEDf9DzEDhhgpf1lMNEjFUOLiJH1Nze3kVsFqScGeQTpEJGRtQAhnYbdnB6SZRHFCarEtzooRFucsIWMjtGRMZ_XMzXP2x1YUonGJEJhOLWjBkZekdJkjPI1gY3Ha5sHJ5pC6adyYeuT6COpNPaeDPnZuL_1oZ0E79PzRj2-FbelWoDZ3JSOiUzdIRqgsWt5K-65N3cgOARvh62HlQjb5vRCXhkm7kgjddXc5g8YexyqKeIe_CiotWo9I41dgHvVRtP_PCnvGdbVj4ngfImQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"mood\": \"good\",\n\t\"activities\": \"I played football today at 10 AM\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://96l5avo0v4.execute-api.us-east-1.amazonaws.com/dev/diaries",
+					"protocol": "https",
+					"host": [
+						"96l5avo0v4",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"diaries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Diary",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpLTkpfVWNScGtXMnQwQzdETmstYiJ9.eyJpc3MiOiJodHRwczovL2Rldi1lOXV5ODhxYS51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTc0NDUxMzk3NzUyNjAyMjAyMjMiLCJhdWQiOiJ2UklLY1gyblUybnR5RzdPa211Y2JrU251ZTM4Y1l5bCIsImlhdCI6MTYyOTIzMzI0MSwiZXhwIjoxNjI5NjY1MjQxLCJhdF9oYXNoIjoiRVBpbG5FWTU4SjJESU5Ta3BwZTYwdyIsIm5vbmNlIjoia1FLM2dxMFphSFBqbFU2dzhRQUVwT2xYLTYuS1FvTGUifQ.oPlHIED_4NfDdpExz4_6C7_KmKiGzAowblDi8oML89UorMlpCEZ9U_94mDt2lQMdeDUEDf9DzEDhhgpf1lMNEjFUOLiJH1Nze3kVsFqScGeQTpEJGRtQAhnYbdnB6SZRHFCarEtzooRFucsIWMjtGRMZ_XMzXP2x1YUonGJEJhOLWjBkZekdJkjPI1gY3Ha5sHJ5pC6adyYeuT6COpNPaeDPnZuL_1oZ0E79PzRj2-FbelWoDZ3JSOiUzdIRqgsWt5K-65N3cgOARvh62HlQjb5vRCXhkm7kgjddXc5g8YexyqKeIe_CiotWo9I41dgHvVRtP_PCnvGdbVj4ngfImQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"mood\": \"bad\",\n\t\"activities\": \"I met my friends at 10 AM\",\n\t\"dayGoalDone\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://96l5avo0v4.execute-api.us-east-1.amazonaws.com/dev/diaries/42de774d-8532-4a93-a2db-42da1112b792",
+					"protocol": "https",
+					"host": [
+						"96l5avo0v4",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"diaries",
+						"42de774d-8532-4a93-a2db-42da1112b792"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all diaries",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpLTkpfVWNScGtXMnQwQzdETmstYiJ9.eyJpc3MiOiJodHRwczovL2Rldi1lOXV5ODhxYS51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTc0NDUxMzk3NzUyNjAyMjAyMjMiLCJhdWQiOiJ2UklLY1gyblUybnR5RzdPa211Y2JrU251ZTM4Y1l5bCIsImlhdCI6MTYyOTIzMzI0MSwiZXhwIjoxNjI5NjY1MjQxLCJhdF9oYXNoIjoiRVBpbG5FWTU4SjJESU5Ta3BwZTYwdyIsIm5vbmNlIjoia1FLM2dxMFphSFBqbFU2dzhRQUVwT2xYLTYuS1FvTGUifQ.oPlHIED_4NfDdpExz4_6C7_KmKiGzAowblDi8oML89UorMlpCEZ9U_94mDt2lQMdeDUEDf9DzEDhhgpf1lMNEjFUOLiJH1Nze3kVsFqScGeQTpEJGRtQAhnYbdnB6SZRHFCarEtzooRFucsIWMjtGRMZ_XMzXP2x1YUonGJEJhOLWjBkZekdJkjPI1gY3Ha5sHJ5pC6adyYeuT6COpNPaeDPnZuL_1oZ0E79PzRj2-FbelWoDZ3JSOiUzdIRqgsWt5K-65N3cgOARvh62HlQjb5vRCXhkm7kgjddXc5g8YexyqKeIe_CiotWo9I41dgHvVRtP_PCnvGdbVj4ngfImQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://96l5avo0v4.execute-api.us-east-1.amazonaws.com/dev/diaries",
+					"protocol": "https",
+					"host": [
+						"96l5avo0v4",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"diaries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get attachment URL",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpLTkpfVWNScGtXMnQwQzdETmstYiJ9.eyJpc3MiOiJodHRwczovL2Rldi1lOXV5ODhxYS51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTc0NDUxMzk3NzUyNjAyMjAyMjMiLCJhdWQiOiJ2UklLY1gyblUybnR5RzdPa211Y2JrU251ZTM4Y1l5bCIsImlhdCI6MTYyOTIzMzI0MSwiZXhwIjoxNjI5NjY1MjQxLCJhdF9oYXNoIjoiRVBpbG5FWTU4SjJESU5Ta3BwZTYwdyIsIm5vbmNlIjoia1FLM2dxMFphSFBqbFU2dzhRQUVwT2xYLTYuS1FvTGUifQ.oPlHIED_4NfDdpExz4_6C7_KmKiGzAowblDi8oML89UorMlpCEZ9U_94mDt2lQMdeDUEDf9DzEDhhgpf1lMNEjFUOLiJH1Nze3kVsFqScGeQTpEJGRtQAhnYbdnB6SZRHFCarEtzooRFucsIWMjtGRMZ_XMzXP2x1YUonGJEJhOLWjBkZekdJkjPI1gY3Ha5sHJ5pC6adyYeuT6COpNPaeDPnZuL_1oZ0E79PzRj2-FbelWoDZ3JSOiUzdIRqgsWt5K-65N3cgOARvh62HlQjb5vRCXhkm7kgjddXc5g8YexyqKeIe_CiotWo9I41dgHvVRtP_PCnvGdbVj4ngfImQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"url": {
+					"raw": "https://96l5avo0v4.execute-api.us-east-1.amazonaws.com/dev/diraies/42de774d-8532-4a93-a2db-42da1112b792/attachment",
+					"protocol": "https",
+					"host": [
+						"96l5avo0v4",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"diraies",
+						"42de774d-8532-4a93-a2db-42da1112b792",
+						"attachment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete diary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": ""
+		}
+	]
+}
