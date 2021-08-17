@@ -60,18 +60,18 @@ export class DiariesAccess {
     //     return result.Items as TodoItem[]
     // }
 
-    // async deleteTodo(todoId: string, userId: string) {
+    async deleteDiary(diaryId: string, userId: string) {
         
-    //     await this.docClient.delete({
-    //         TableName: this.todosTable,
-    //         Key: {
-    //           todoId,
-    //           userId
-    //         }
-    //     }).promise() 
+        await this.docClient.delete({
+            TableName: this.diariesTable,
+            Key: {
+              diaryId,
+              userId
+            }
+        }).promise() 
         
-    //     logger.info(`Deleted todo ${todoId} for user ${userId}`)
-    // }
+        logger.info(`Deleted diary ${diaryId} for user ${userId}`)
+    }
 
     async updateDiary(diaryId: string, userId: string, updatedDiary: DiaryUpdate){
          

@@ -41,9 +41,9 @@ export async function createDiary(
 //     return await todoAccess.getTodosForUser(userId)
 // } 
 
-// export async function deleteTodo(todoId: string, userId: string){
-//     return await todoAccess.deleteTodo(todoId, userId)
-// }
+export async function deleteDiary(diaryId: string, userId: string){
+    return await diariesAccess.deleteDiary(diaryId, userId)
+}
 
 export async function updateDiary(diaryId: string, userId: string, updatedDiary: UpdateDiaryRequest){
     return await diariesAccess.updateDiary(diaryId, userId, updatedDiary)
