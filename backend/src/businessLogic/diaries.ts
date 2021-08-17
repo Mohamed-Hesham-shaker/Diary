@@ -1,8 +1,8 @@
 import { DiariesAccess } from '../dataLayer/diariesAccess'
 import { CreateDiaryRequest } from '../requests/CreateDiaryRequest'
-import { getUploadUrl } from '../dataLayer/attachmentUtils';
+// import { getUploadUrl } from '../dataLayer/attachmentUtils';
 import { DiaryItem } from '../models/DiaryItem'
-// import { UpdateDiaryRequest } from '../requests/UpdateDiaryRequest'
+import { UpdateDiaryRequest } from '../requests/UpdateDiaryRequest'
 import { createLogger } from '../utils/logger'
 import * as uuid from 'uuid'
 
@@ -45,6 +45,6 @@ export async function createDiary(
 //     return await todoAccess.deleteTodo(todoId, userId)
 // }
 
-// export async function updateTodo(todoId: string, userId: string, updatedTodo: UpdateTodoRequest){
-//     return await todoAccess.updateTodo(todoId, userId, updatedTodo)
-// }
+export async function updateDiary(diaryId: string, userId: string, updatedDiary: UpdateDiaryRequest){
+    return await diariesAccess.updateDiary(diaryId, userId, updatedDiary)
+}
