@@ -37,9 +37,9 @@ export async function createDiary(
     })
 }
 
-// export async function getTodosForUser(userId: string) : Promise<TodoItem[]>{
-//     return await todoAccess.getTodosForUser(userId)
-// } 
+export async function getDiariesForUser(userId: string) : Promise<DiaryItem[]>{
+    return await diariesAccess.getDiariesForUser(userId)
+} 
 
 export async function deleteDiary(diaryId: string, userId: string){
     return await diariesAccess.deleteDiary(diaryId, userId)

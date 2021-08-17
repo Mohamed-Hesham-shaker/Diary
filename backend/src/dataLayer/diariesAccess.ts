@@ -31,6 +31,7 @@ export class DiariesAccess {
                 ':diaryId': diaryId,
                 ":userId": userId
             }
+     
         }).promise()   
     }
 
@@ -46,19 +47,19 @@ export class DiariesAccess {
         return diaryItem
     }
 
-    // async getTodosForUser(userId: string): Promise<TodoItem[]> {
+    async getDiariesForUser(userId: string): Promise<DiaryItem[]> {
        
-    //    const result = await this.docClient.query({
-    //       TableName: this.todosTable,
-    //       IndexName: this.createdAtIndex,
-    //       KeyConditionExpression: 'userId = :userId',
-    //       ExpressionAttributeValues:{
-    //           ":userId": userId
-    //       }
-    //     }).promise() 
+       const result = await this.docClient.query({
+          TableName: this.diariesTable,
+          IndexName: this.createdAtIndex,
+          KeyConditionExpression: 'userId = :userId',
+          ExpressionAttributeValues:{
+              ":userId": userId
+          }
+        }).promise() 
         
-    //     return result.Items as TodoItem[]
-    // }
+        return result.Items as DiaryItem[]
+    }
 
     async deleteDiary(diaryId: string, userId: string) {
         
