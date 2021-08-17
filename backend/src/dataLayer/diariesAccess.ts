@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk'
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
-import { createLogger } from '../utils/logger'
+// import { createLogger } from '../utils/logger'
 import { DiaryItem } from '../models/DiaryItem'
 // import { DiaryUpdate } from '../models/DiaryUpdate';
 
@@ -8,13 +8,13 @@ import { DiaryItem } from '../models/DiaryItem'
 const AWSXRay = require('aws-xray-sdk')
 const XAWS = AWSXRay.captureAWS(AWS)
   
-const logger = createLogger('dataLayer:diariesAccess')
+// const logger = createLogger('dataLayer:diariesAccess')
 
 export class DiariesAccess {
     constructor(
         private readonly docClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
         private readonly diariesTable = process.env.DIARIES_TABLE,
-        private readonly createdAtIndex = process.env.CREATED_AT_INDEX 
+        // private readonly createdAtIndex = process.env.CREATED_AT_INDEX 
         ){
     }
 

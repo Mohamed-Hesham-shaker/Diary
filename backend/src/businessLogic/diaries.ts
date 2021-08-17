@@ -1,6 +1,6 @@
-import { DiaryAccess } from '../dataLayer/diariesAccess'
+import { DiariesAccess } from '../dataLayer/diariesAccess'
 import { CreateDiaryRequest } from '../requests/CreateDiaryRequest'
-import { getUploadUrl } from '../dataLayer/attachmentUtils';
+// import { getUploadUrl } from '../dataLayer/attachmentUtils';
 import { DiaryItem } from '../models/DiaryItem'
 // import { UpdateDiaryRequest } from '../requests/UpdateDiaryRequest'
 import { createLogger } from '../utils/logger'
@@ -8,7 +8,7 @@ import * as uuid from 'uuid'
 
 const logger = createLogger('businessLogic:diaries')
 
-const diaryAccess = new DiaryAccess()
+const diariesAccess = new DiariesAccess()
 const bucketName = process.env.ATTACHMENT_S3_BUCKET
 
 // export async function getTodoById(diaryId: string, userId: string) : Promise<any>{
@@ -27,12 +27,12 @@ export async function createDiary(
     const diaryId = uuid.v4()
     logger.info(`Generating uuid value ${diaryId}`)
 
-    return await diaryAccess.createDiary({
+    return await diariesAccess.createDiary({
         diaryId,
         userId,
         ...createDiaryRequest,
         createdAt: new Date().toISOString(),
-        done: false,
+        dayGoalDone: false,
         attachmentUrl: `https://${bucketName}.s3.amazonaws.com/${diaryId}`
     })
 }
