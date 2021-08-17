@@ -1,6 +1,6 @@
 import { DiariesAccess } from '../dataLayer/diariesAccess'
 import { CreateDiaryRequest } from '../requests/CreateDiaryRequest'
-// import { getUploadUrl } from '../dataLayer/attachmentUtils';
+import { getUploadUrl } from '../dataLayer/attachmentUtils';
 import { DiaryItem } from '../models/DiaryItem'
 import { UpdateDiaryRequest } from '../requests/UpdateDiaryRequest'
 import { createLogger } from '../utils/logger'
