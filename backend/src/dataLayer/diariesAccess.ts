@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk'
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
-// import { createLogger } from '../utils/logger'
+import { createLogger } from '../utils/logger'
 import { DiaryItem } from '../models/DiaryItem'
 // import { DiaryUpdate } from '../models/DiaryUpdate';
 
@@ -8,30 +8,30 @@ import { DiaryItem } from '../models/DiaryItem'
 const AWSXRay = require('aws-xray-sdk')
 const XAWS = AWSXRay.captureAWS(AWS)
   
-// const logger = createLogger('dataLayer:diariesAccess')
+const logger = createLogger('dataLayer:diariesAccess')
 
 export class DiariesAccess {
     constructor(
         private readonly docClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
         private readonly diariesTable = process.env.DIARIES_TABLE,
-        // private readonly createdAtIndex = process.env.CREATED_AT_INDEX 
+        private readonly createdAtIndex = process.env.CREATED_AT_INDEX 
         ){
     }
 
-    // async getDiaryById(diaryId: string, userId: string): Promise<AWS.DynamoDB.QueryOutput>{
+    async getDiaryById(diaryId: string, userId: string): Promise<AWS.DynamoDB.QueryOutput>{
         
-    //     logger.info(`Getting diary item by id ${diaryId} for user ${userId}`)
+        logger.info(`Getting diary item by id ${diaryId} for user ${userId}`)
 
-    //     return await this.docClient.query({
-    //         TableName: this.diariesTable,
-    //         IndexName: this.createdAtIndex,
-    //         KeyConditionExpression: 'diaryId = :diaryId and userId = :userId',
-    //         ExpressionAttributeValues:{
-    //             ':diaryId': diaryId,
-    //             ":userId": userId
-    //         }
-    //     }).promise()   
-    // }
+        return await this.docClient.query({
+            TableName: this.diariesTable,
+            IndexName: this.createdAtIndex,
+            KeyConditionExpression: 'diaryId = :diaryId and userId = :userId',
+            ExpressionAttributeValues:{
+                ':diaryId': diaryId,
+                ":userId": userId
+            }
+        }).promise()   
+    }
 
     
 

@@ -1,6 +1,6 @@
 import { DiariesAccess } from '../dataLayer/diariesAccess'
 import { CreateDiaryRequest } from '../requests/CreateDiaryRequest'
-// import { getUploadUrl } from '../dataLayer/attachmentUtils';
+import { getUploadUrl } from '../dataLayer/attachmentUtils';
 import { DiaryItem } from '../models/DiaryItem'
 // import { UpdateDiaryRequest } from '../requests/UpdateDiaryRequest'
 import { createLogger } from '../utils/logger'
@@ -11,13 +11,13 @@ const logger = createLogger('businessLogic:diaries')
 const diariesAccess = new DiariesAccess()
 const bucketName = process.env.ATTACHMENT_S3_BUCKET
 
-// export async function getTodoById(diaryId: string, userId: string) : Promise<any>{
-//     return await todoAccess.getTodoById(todoId, userId)
-// }  
+export async function getDiaryById(diaryId: string, userId: string) : Promise<any>{
+    return await diariesAccess.getDiaryById(diaryId, userId)
+}  
 
-// export async function createAttachmentPresignedUrl(todoId: string): Promise<string> {
-//     return await getUploadUrl(todoId)
-// } 
+export async function createAttachmentPresignedUrl(diaryId: string): Promise<string> {
+    return await getUploadUrl(diaryId)
+} 
 
 export async function createDiary(
     createDiaryRequest: CreateDiaryRequest,
