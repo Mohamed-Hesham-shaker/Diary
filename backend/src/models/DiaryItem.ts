@@ -2,8 +2,8 @@ export interface DiaryItem {
   userId: string
   diaryId: string
   createdAt: string
-  Mood: string
-  Activities: string
+  mood: string
+  activities: string
   dayGoalDone: boolean
   attachmentUrl?: string
 }

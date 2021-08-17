@@ -1,5 +1,5 @@
 export interface DiaryUpdate {
-  name: string
-  dueDate: string
-  done: boolean
+  mood: string
+  activities: string
+  dayGoalDone: boolean
 }

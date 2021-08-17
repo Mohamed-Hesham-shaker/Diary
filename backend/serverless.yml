@@ -63,19 +63,19 @@ functions:
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
 
-  GetDiaries:
-    handler: src/lambda/http/GetDiaries.handler
-    events:
-      - http:
-          method: get
-          path: diaries
-          cors: true
-          authorizer: Auth
-    iamRoleStatements:
-      - Effect: Allow
-        Action:
-          - dynamodb:Query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}
+  # GetDiaries:
+  #   handler: src/lambda/http/GetDiaries.handler
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: diaries
+  #         cors: true
+  #         authorizer: Auth
+  #   iamRoleStatements:
+  #     - Effect: Allow
+  #       Action:
+  #         - dynamodb:Query
+  #       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}
 
   CreateDiary:
     handler: src/lambda/http/createDiary.handler
@@ -117,38 +117,38 @@ functions:
           - dynamodb:UpdateDiary
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}
 
-  DeleteDiary:
-    handler: src/lambda/http/deleteDiary.handler
-    events:
-      - http:
-          method: delete
-          path: diraies/{diaryId}
-          cors: true
-          authorizer: Auth
-    iamRoleStatements:
-      - Effect: Allow
-        Action:
-          - dynamodb:DeleteItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}  
+  # DeleteDiary:
+  #   handler: src/lambda/http/deleteDiary.handler
+  #   events:
+  #     - http:
+  #         method: delete
+  #         path: diraies/{diaryId}
+  #         cors: true
+  #         authorizer: Auth
+  #   iamRoleStatements:
+  #     - Effect: Allow
+  #       Action:
+  #         - dynamodb:DeleteItem
+  #       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}  
 
-  GenerateUploadUrl:
-    handler: src/lambda/http/generateUploadUrl.handler
-    events:
-      - http:
-          method: post
-          path: diraies/{diaryId}/attachment
-          cors: true
-          authorizer: Auth
-    iamRoleStatements:
-      - Effect: Allow
-        Action:
-          - s3:PutObject
-          - s3:GetObject
-        Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
-      - Effect: Allow
-        Action:
-          - dynamodb:Query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}
+  # GenerateUploadUrl:
+  #   handler: src/lambda/http/generateUploadUrl.handler
+  #   events:
+  #     - http:
+  #         method: post
+  #         path: diraies/{diaryId}/attachment
+  #         cors: true
+  #         authorizer: Auth
+  #   iamRoleStatements:
+  #     - Effect: Allow
+  #       Action:
+  #         - s3:PutObject
+  #         - s3:GetObject
+  #       Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
+  #     - Effect: Allow
+  #       Action:
+  #         - dynamodb:Query
+  #       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DIARIES_TABLE}
 
 resources:
   Resources:

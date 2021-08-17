@@ -2,7 +2,7 @@ import * as AWS from 'aws-sdk'
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 import { createLogger } from '../utils/logger'
 import { DiaryItem } from '../models/DiaryItem'
-// import { DiaryUpdate } from '../models/DiaryUpdate';
+import { DiaryUpdate } from '../models/DiaryUpdate';
 
 
 const AWSXRay = require('aws-xray-sdk')
@@ -18,20 +18,20 @@ export class DiariesAccess {
         ){
     }
 
-    // async getDiaryById(diaryId: string, userId: string): Promise<AWS.DynamoDB.QueryOutput>{
+    async getDiaryById(diaryId: string, userId: string): Promise<AWS.DynamoDB.QueryOutput>{
         
-    //     logger.info(`Getting diary item by id ${diaryId} for user ${userId}`)
+        logger.info(`Getting diary item by id ${diaryId} for user ${userId}`)
 
-    //     return await this.docClient.query({
-    //         TableName: this.diariesTable,
-    //         IndexName: this.createdAtIndex,
-    //         KeyConditionExpression: 'diaryId = :diaryId and userId = :userId',
-    //         ExpressionAttributeValues:{
-    //             ':diaryId': diaryId,
-    //             ":userId": userId
-    //         }
-    //     }).promise()   
-    // }
+        return await this.docClient.query({
+            TableName: this.diariesTable,
+            IndexName: this.createdAtIndex,
+            KeyConditionExpression: 'diaryId = :diaryId and userId = :userId',
+            ExpressionAttributeValues:{
+                ':diaryId': diaryId,
+                ":userId": userId
+            }
+        }).promise()   
+    }
 
     
 
@@ -72,28 +72,28 @@ export class DiariesAccess {
     //     logger.info(`Deleted todo ${todoId} for user ${userId}`)
     // }
 
-    // async updateTodo(todoId: string, userId: string, updatedTodo: TodoUpdate){
+    async updateDiary(diaryId: string, userId: string, updatedDiary: DiaryUpdate){
          
-    //     await this.docClient.update({
-    //         TableName: this.todosTable,
-    //         Key: {
-    //           todoId,
-    //           userId
-    //         },
-    //         UpdateExpression: 'set #name = :name, #dueDate = :dueDate, #done = :done',
-    //         ExpressionAttributeNames: {
-    //           '#name': 'name',
-    //           '#dueDate': 'dueDate',
-    //           '#done': 'done'
-    //         },
-    //         ExpressionAttributeValues: {
-    //             ':name': updatedTodo.name,
-    //             ':dueDate': updatedTodo.dueDate,
-    //             ':done': updatedTodo.done
-    //         }
-    //     }).promise()
+        await this.docClient.update({
+            TableName: this.diariesTable,
+            Key: {
+              diaryId,
+              userId
+            },
+            UpdateExpression: 'set #mood = :mood, #activities = :activities, #dayGoalDone = :dayGoalDone',
+            ExpressionAttributeNames: {
+              '#mood': 'mood',
+              '#activities': 'activities',
+              '#dayGoalDone': 'dayGoalDone'
+            },
+            ExpressionAttributeValues: {
+                ':mood': updatedDiary.mood,
+                ':activities': updatedDiary.activities,
+                ':dayGoalDone': updatedDiary.dayGoalDone
+            }
+        }).promise()
         
-    //     logger.info(`Updated todo ${todoId} for user ${userId}`) 
-    // }
+        logger.info(`Updated diary ${diaryId} for user ${userId}`) 
+    }
 
 }
