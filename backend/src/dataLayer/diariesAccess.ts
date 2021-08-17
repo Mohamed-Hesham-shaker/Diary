@@ -5,6 +5,7 @@ import { DiaryItem } from '../models/DiaryItem'
 import { DiaryUpdate } from '../models/DiaryUpdate';
 
 
+
 const AWSXRay = require('aws-xray-sdk')
 const XAWS = AWSXRay.captureAWS(AWS)
   
