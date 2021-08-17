@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "group",
+  "type": "object",
+  "properties": {
+    "mood": {
+      "type": "string",
+      "minLength": 2
+    },
+    "activities": {
+      "type": "string",
+      "minLength": 2
+    },
+    "dayGoalDone": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "mood",
+    "activities",
+    "dayGoalDone"
+  ],
+  "additionalProperties": false
+}
