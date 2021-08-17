@@ -1,23 +1,25 @@
-# Serverless TODO
+# Serverless DIARY
 
-A simple TODO application using AWS Lambda and Serverless framework.
+A simple DIARY application using AWS Lambda and Serverless framework.
 
 # Functionality of the application
 
-This application  allows creating/removing/updating/fetching TODO items. Each TODO item can optionally have an attachment image. Each user only has access to TODO items that he/she has created.
+Pick your mood like(rad, good, meh, bad, or awful) and add activities like (friends, date, exercise, sport, relax, movies, gaming, reading, cleaning, sleep early, eat healthy or shopping) you have been doing during the day and also add notes.
 
-# TODO items
+This application allows creating/removing/updating/fetching DIARY items. Each DIARY item can optionally have an attachment image. Each user only has access to DIARY items that he/she has created.
 
-The application should store TODO items, and each TODO item contains the following fields:
+# DIARY items
 
-* `todoId` (string) - a unique id for an item
+The application should store DIARY items, and each DIARY item contains the following fields:
+
+* `diaryId` (string) - a unique id for an item
 * `createdAt` (string) - date and time when an item was created
-* `name` (string) - name of a TODO item (e.g. "Change a light bulb")
-* `dueDate` (string) - date and time by which an item should be completed
-* `done` (boolean) - true if an item was completed, false otherwise
-* `attachmentUrl` (string) (optional) - a URL pointing to an image attached to a TODO item
+* `mood` (string) - mood of the user (e.g. "Good")
+* `activities` (string) - user writes the activites he did through the day (e.g. "Play tennis")
+* `dayGoalDone` (boolean) - true if the user complete the day goal that he decided for that day, false otherwise
+* `attachmentUrl` (string) (optional) - a URL pointing to an image attached to a DIARY item
 
-I also store an id of a user who created a TODO item.
+I also store an id of a user who created a DIARY item.
 
 ## Prerequisites
 
@@ -39,30 +41,6 @@ I also store an id of a user who created a TODO item.
    # You need to have a pair of Access key (YOUR_ACCESS_KEY_ID and YOUR_SECRET_KEY) of an IAM user with Admin access permissions
    sls config credentials --provider aws --key YOUR_ACCESS_KEY_ID --secret YOUR_SECRET_KEY --profile serverless
    ```
-   
-
-
-# Frontend
-
-The `client` folder contains a web application that can use the API that are developed in the project.
-
-This frontend work with serverless application, you don't need to make any changes to the code. The only file that you need to edit is the `config.ts` file in the `client` folder. This file configures your client application just as it was done in the course and contains an API endpoint and Auth0 configuration:
-
-```ts
-const apiId = '...' API Gateway id
-export const apiEndpoint = `https://${apiId}.execute-api.us-east-1.amazonaws.com/dev`
-
-export const authConfig = {
-  domain: '...',    // Domain from Auth0
-  clientId: '...',  // Client id from an Auth0 application
-  callbackUrl: 'http://localhost:3000/callback'
-}
-```
-
-## Authentication
-
-To implement authentication in your application, you would have to create an Auth0 application and copy "domain" and "client id" to the `config.ts` file in the `client` folder. We recommend using asymmetrically encrypted JWT tokens.
-
 
 # How to run the application
 
@@ -76,41 +54,9 @@ npm install
 sls deploy -v
 ```
 
-## Frontend
-
-To run a client application first edit the `client/src/config.ts` file to set correct parameters. And then run the following commands:
-
-```
-cd client
-npm install
-npm run start
-```
-
-This should start a development server with the React application that will interact with the serverless TODO application.
-
 # Postman collection
 
-An alternative way to run APIs, you can use the Postman collection that contains sample requests. You can find a Postman collection in this project. To import this collection, do the following.
+To run APIs, you can use the Postman collection that contains sample requests. You can find "DIARY.postman_collection.json" Postman collection in this project.
 
-Click on the import button:
-
-![Alt text](images/import-collection-1.png?raw=true "Image 1")
-
-
-Click on the "Choose Files":
-
-![Alt text](images/import-collection-2.png?raw=true "Image 2")
-
-
-Select a file to import:
-
-![Alt text](images/import-collection-3.png?raw=true "Image 3")
-
-
-Right click on the imported collection to set variables for the collection:
-
-![Alt text](images/import-collection-4.png?raw=true "Image 4")
-
-Provide variables for the collection (similarly to how this was done in the course):
-
-![Alt text](images/import-collection-5.png?raw=true "Image 5")
+# AUTH Token 
+Please use this auth token in postman eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpLTkpfVWNScGtXMnQwQzdETmstYiJ9.eyJpc3MiOiJodHRwczovL2Rldi1lOXV5ODhxYS51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTc0NDUxMzk3NzUyNjAyMjAyMjMiLCJhdWQiOiJ2UklLY1gyblUybnR5RzdPa211Y2JrU251ZTM4Y1l5bCIsImlhdCI6MTYyOTIzMzI0MSwiZXhwIjoxNjI5NjY1MjQxLCJhdF9oYXNoIjoiRVBpbG5FWTU4SjJESU5Ta3BwZTYwdyIsIm5vbmNlIjoia1FLM2dxMFphSFBqbFU2dzhRQUVwT2xYLTYuS1FvTGUifQ.oPlHIED_4NfDdpExz4_6C7_KmKiGzAowblDi8oML89UorMlpCEZ9U_94mDt2lQMdeDUEDf9DzEDhhgpf1lMNEjFUOLiJH1Nze3kVsFqScGeQTpEJGRtQAhnYbdnB6SZRHFCarEtzooRFucsIWMjtGRMZ_XMzXP2x1YUonGJEJhOLWjBkZekdJkjPI1gY3Ha5sHJ5pC6adyYeuT6COpNPaeDPnZuL_1oZ0E79PzRj2-FbelWoDZ3JSOiUzdIRqgsWt5K-65N3cgOARvh62HlQjb5vRCXhkm7kgjddXc5g8YexyqKeIe_CiotWo9I41dgHvVRtP_PCnvGdbVj4ngfImQ
